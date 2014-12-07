@@ -32,19 +32,24 @@
  * Miscellaneous
  */
 
- /* Let's get this party started */
-::-webkit-scrollbar {
-    width: 12px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: rgba(38,196,238,0.8); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(38,196,238,0.4); 
+/* Custom Scrollbar */
+::-webkit-scrollbar{
+  display: none;
 }
 
+/*
+div:not(.navbar)::-webkit-scrollbar {
+    width: 12px;
+}
+
+div:not(.navbar)::-webkit-scrollbar-thumb {
+    background: rgba(38,196,238,0.8); 
+}
+
+div:not(.navbar)::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(38,196,238,0.4); 
+}
+*/
 
 /*
  * Scaffolding
