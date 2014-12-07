@@ -265,7 +265,7 @@ body {
   color: #eee;
   background-color: #000000;
   background-image: url('../../images/logo/stairs_footsteps_3.svg');
-  background-size: 0;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 0px 0;
