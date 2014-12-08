@@ -9,8 +9,15 @@ if (!$con = mysqli_connect($server, $user, $password, $db))
 	die("Failed to connect to MySQL: " . mysqli_connect_error());
 }
 
+$username = $_POST['username'];
+$netid = $_POST['netid'];
+$major = $_POST['major'];
+$year = $_POST['year'];
+$profile = $_POST['profile'];
+$size = $_POST['size'];
+
 $columns = "username, netid, major, year, profile, size";
-$values = implode(", ", $_POST);
+$values = "'$username', '$netid', '$major', '$year', '$profile', '$size'";
 
 $query = "INSERT INTO registration (" . $columns . ") VALUES (" . $values . ")";
 
