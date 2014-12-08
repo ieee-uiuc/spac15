@@ -13,7 +13,7 @@ $username = $_POST['username'];
 
 // First check if they have registered already, and if so, exit.
 $query = "SELECT * FROM registration WHERE netid='$netid'";
-if (mysqli_num_rows($mysqli_query($con, $query)) != 0)
+if (mysqli_num_rows(mysqli_query($con, $query)) != 0)
 {
 	mysqli_close($con);
 	echo "Repeat";
