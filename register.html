@@ -101,7 +101,7 @@
 <p>Name: <input type=text id="RegistrationName" required> </p>
 <p> NetID: <input type=text id="RegistrationNetID" required> </p>
 <p> Year:
-<select id="RegistrationSize" required>
+<select id="RegistrationYear" required>
   <option value="1">Freshman</option>
   <option value="2">Sophomore</option>
   <option value="3">Junior</option>
@@ -173,7 +173,7 @@
     var size = $('#RegistrationSize').val();
 
     var dataIn = {
-      "username":name,
+      "username":username,
       "netid":netid,
       "major":major,
       "year":year,
