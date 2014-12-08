@@ -10,15 +10,6 @@ if (!$con = mysqli_connect($server, $user, $password, $db))
 }
 
 $username = $_POST['username'];
-
-// First check if they have registered already, and if so, exit.
-$query = "SELECT id FROM registration WHERE username='$username'";
-if (mysqli_num_rows($mysqli_query($con, $query)) != 0)
-{
-	mysqli_close($con);
-	die("Repeat");
-}
-
 $netid = $_POST['netid'];
 $major = $_POST['major'];
 $year = $_POST['year'];
@@ -30,14 +21,12 @@ $values = "'$username', '$netid', '$major', '$year', '$profile', '$size'";
 
 $query = "INSERT INTO registration (" . $columns . ") VALUES (" . $values . ")";
 
-// check if they've registered already
-
 if (!mysqli_query($con, $query))
-	$return = "Fail";
+	$output = "Query failed: " . mysqli_error($con);
 else
-	$return = "Success";
+	$output = "Thank you for registering for SPAC 2015!";
 
-echo $return;
+echo $output;
 
 mysqli_close($con);
 
