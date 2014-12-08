@@ -28,17 +28,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./docs-assets/ico/apple-touch-icon-144-precomposed.png">
 <link rel="shortcut icon" href="docs-assets/ico/favicon.png">
 
-<script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-146052-10']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
 <style type="text/css">
   .bs-header {
     background-image: linear-gradient(rgba(66, 139, 202, .7));
@@ -99,26 +88,61 @@
     </div>
 
     
-    <div class="container">
+    <div class="container" >
       <div class="page-header">
-    <h1>Join Us <br /><small>at SPAC 2015.</small></h1>
+    <h1>Join Us <small>at SPAC 2015.</small></h1>
 </div>
 
-<h2>Step 1: <small>Register for SPAC. Get a complementary t-shirt.</small></h2>
-<form>
+<h2>Step 1: <small>Register for SPAC. Get a complimentary t-shirt.</small></h2>
+<br />
+<div id="RegistrationFormContainer" class="lead">
+<form id="RegistrationForm" action="javascript:sendRegistration()" target="_blank">
 
-Name: <input type=text id="RegistrationName">
-<br /> <br />
-NetID: <input type=text id="RegistrationNetID"> <br /><br />
-T-Shirt Size:
-<select id="RegistrationShize">
+<p>Name: <input type=text id="RegistrationName" required> </p>
+<p> NetID: <input type=text id="RegistrationNetID" required> </p>
+<p> Year:
+<select id="RegistrationSize" required>
+  <option value="1">Freshman</option>
+  <option value="2">Sophomore</option>
+  <option value="3">Junior</option>
+  <option value="4">Senior</option>
+</select>
+</p>
+<p> Major: 
+<select id="RegistrationMajor" required>
+  <option value="EE">Electrical Engineering</option>
+  <option value="CE">Computer Engineering</option>
+  <option value="AE">Aerospace Engineering</option>
+  <option value="MSE">Material Science and Engineering</option>
+  <option value="GE">General Engineering</option>
+  <option value="ME">Mechanical Engineering</option>
+  <option value="CEE">Civil Engineering</option>
+  <option value="BE">Bioengineering</option>
+  <option value="ABE">Agricultural and Biological Engineering</option>
+  <option value="EM">Engineering Mechanics</option>
+  <option value="MATH">Math</option>
+  <option value="CS">Computer Science</option>
+  <option value="PHYS">Physics</option>
+  <option value="OE">Other Engineering</option>
+  <option value="O">Other</option>
+</select>
+</p>
+
+<p> LinkedIn Profile URL (optional): <input type="text" id="RegistrationLinkedIn"> </p>
+
+<p> T-Shirt Size:
+<select id="RegistrationSize" required>
   <option value="s">Small</option>
   <option value="m">Medium</option>
   <option value="l">Large</option>
   <option value="x">X-Large</option>
 </select>
+</p>
+
+<input class="btn btn-primary" type="submit">
 
 </form>
+</div>
 
 <h2>Step 2 (optional): <small>Upload your résumé. <br> Our sponsors will get access to all submitted résumés.</small></h2>
 
@@ -126,7 +150,7 @@ T-Shirt Size:
 <script src="https://app.box.com/embed/upload.js?token=pdktqecyfhvpm796z2qyx9iip3t3ecvo&folder_id=1525508803&w=385&h=385&i=Use%20your%20%40illinois.edu%20email%20when%20you%20upload&d=1&t=Submit%20file%20to%20SPAC%202014&r=1" type="text/javascript"></script>
 </p>
 
-<h2>Step 3: <small>See you at SPAC 2014!</small></h2><br><br>
+<h2>Step 3: <small>See you at SPAC 2015!</small></h2><br><br>
     </div>
 
 <!-- Bootstrap core JavaScript
@@ -136,6 +160,33 @@ T-Shirt Size:
 <script src="dist/js/bootstrap.js"></script>
 <script src="docs-assets/js/holder.js"></script>
 <script src="docs-assets/js/application.js"></script>
+
+
+<script>
+  function sendRegistration()
+  {
+    var username= $('#RegistrationName').val();
+    var netid = $('#RegistrationNetID').val();
+    var major = $('#RegistrationMajor').val();
+    var year = $('#RegistrationYear').val();
+    var profile = $('#RegistrationLinkedIn').val();
+    var size = $('#RegistrationSize').val();
+
+    var dataIn = {
+      "username":name,
+      "netid":netid,
+      "major":major,
+      "year":year,
+      "profile":profile,
+      "size":size
+    };
+
+    $.post("register.php",dataIn, function(data, status){
+      $('#RegistrationFormContainer').text(data);
+    });
+
+  }
+</script>
 
   </body>
 </html>
