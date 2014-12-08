@@ -12,11 +12,12 @@ if (!$con = mysqli_connect($server, $user, $password, $db))
 $username = $_POST['username'];
 
 // First check if they have registered already, and if so, exit.
-$query = "SELECT id FROM registration WHERE netid='$netid'";
+$query = "SELECT * FROM registration WHERE netid='$netid'";
 if (mysqli_num_rows($mysqli_query($con, $query)) != 0)
 {
 	mysqli_close($con);
-	die("Repeat");
+	echo "Repeat";
+	die();
 }
 
 $netid = $_POST['netid'];
@@ -29,8 +30,6 @@ $columns = "username, netid, major, year, profile, size";
 $values = "'$username', '$netid', '$major', '$year', '$profile', '$size'";
 
 $query = "INSERT INTO registration (" . $columns . ") VALUES (" . $values . ")";
-
-// check if they've registered already
 
 if (!mysqli_query($con, $query))
 	$return = "Fail";
