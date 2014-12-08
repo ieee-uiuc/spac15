@@ -32,25 +32,6 @@
  * Miscellaneous
  */
 
-/* Custom Scrollbar */
-::-webkit-scrollbar{
-  display: default;
-}
-
-/*
-div:not(.navbar)::-webkit-scrollbar {
-    width: 12px;
-}
-
-div:not(.navbar)::-webkit-scrollbar-thumb {
-    background: rgba(38,196,238,0.8); 
-}
-
-div:not(.navbar)::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(38,196,238,0.4); 
-}
-*/
-
 /*
  * Scaffolding
  *

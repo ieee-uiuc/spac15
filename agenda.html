@@ -58,6 +58,12 @@
     vertical-align: bottom;
   }
 
+  .AgendaSidebarFixed
+  {
+    position: fixed;
+    top: 50px;
+  }
+
 </style>
 
 </head>
@@ -110,7 +116,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="hidden-print" role="complementary">
-            <ul class="nav bs-sidenav">
+            <ul class="nav bs-sidenav" id="AgendaSidebar">
                 <li><a href="#location">Location</a></li>
                 <li><a href="#registration">Registration</a></li>
                 <li><a href="#panel">Panel</a></li>
@@ -127,7 +133,7 @@
         </div>
         <div class="col-md-9" role="main">
           <div class="page-header">
-            <h1 id="location">SPAC 2015 <small>will begin in ECEB's Grainger Auditorium on February 7th, 2014.</small></h1>
+            <h1 id="location" style="padding-top:0px;margin-top:-14px">SPAC 2015 <small>will begin in ECEB's Grainger Auditorium on February 7th, 2015.</small></h1>
           </div>
 <div class="row clearfix">
   <div class="col-md-12 column">
@@ -315,9 +321,10 @@
 <script src="docs-assets/js/holder.js"></script>
 <script src="docs-assets/js/application.js"></script>
 
-<!-- Nice animation scroll -->
+<!-- Nice animation scroll, fix sidenav at top -->
 <script>
 
+  // Sidebar nav scrolling animation
   $(function() {
     $('a[href*=#]:not([href=#])').click(function() {
       if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -333,6 +340,31 @@
       }
     });
   });
+
+  var $window = $(window);
+
+  // Sidebar nav fix when it reaches the top
+  var sidebar = $('#AgendaSidebar');
+  var origWidth = sidebar.width();
+  var sidebardist = sidebar.offset().top;
+  
+  if ($window.width() > 1200)
+  {
+    $window.scroll(function()
+    {
+      if ( ($window.scrollTop() + 75 >= sidebardist) )
+      {
+          sidebar.addClass("AgendaSidebarFixed");
+          sidebar.width(origWidth); // fix for the random downsize that occurs when using position:fixed
+      }
+
+      else
+      {
+        sidebar.removeClass("AgendaSidebarFixed");
+      }
+    });
+  }
+  
 
 </script>
 
