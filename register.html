@@ -182,6 +182,9 @@
     };
 
     $.post("register.php",dataIn, function(data, status){
+      $('#RegistrationFormContainer').text(data);
+
+      /*
       if (data == "Fail")
       {
         alert("Registration failed, please try again");
@@ -196,6 +199,7 @@
       {
         $('#RegistrationFormContainer').text("You've already registered!");
       }
+      */
     });
 
   }
