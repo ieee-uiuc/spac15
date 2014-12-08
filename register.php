@@ -12,7 +12,7 @@ if (!$con = mysqli_connect($server, $user, $password, $db))
 $username = $_POST['username'];
 
 // First check if they have registered already, and if so, exit.
-$query = "SELECT id FROM registration WHERE netid='$netid'";
+$query = "SELECT id FROM registration WHERE username='$username'";
 if (mysqli_num_rows($mysqli_query($con, $query)) != 0)
 {
 	mysqli_close($con);
