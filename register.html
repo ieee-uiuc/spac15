@@ -181,8 +181,16 @@
       "size":size
     };
 
-    $.post("register.php",dataIn, function(data, status){
-      $('#RegistrationFormContainer').text(data);
+    $.post("register.php",dataIn, function(data, status)
+    {
+      if (data == "Fail")
+        alert("Registration failed, please try again");
+
+      else if (data == "Success")
+        $('#RegistrationFormContainer').text("Thank you for registering for SPAC 2015!");
+
+      else if (data == "Repeat")
+        $('#RegistrationFormContainer').text("You've already registered!");
     });
 
   }
