@@ -215,13 +215,6 @@ body {
   }
 }
 
-
-/*
- * Topography, yo!
- *
- * Apply the map background via base64 and relevant colors where we need 'em.
- */
-
  @-webkit-keyframes steps{
   
   0%, 100%{
@@ -242,6 +235,7 @@ body {
 
  }
 
+/* For mobile? */
 .bs-docs-home {
   color: #eee;
   background-color: #000000;
@@ -250,14 +244,22 @@ body {
   background-attachment: fixed;
   background-position: 0px 0;
 
+  /*
   -webkit-animation: steps 2s infinite;
+  */
 }
 
+/* For desktop? */
 @media (min-width: 768px) {
   .bs-docs-home {
+    /*
     background-image: url('../../images/logo/stairs_footsteps_3.svg');
     background-size: 35%;
     background-position: 5% 65%;
+    */
+    background-image: url('../../images/logo/stairs_footsteps_3.svg'), url('../../images/pictures/front.jpg');
+    background-size: 40%, cover;
+    background-position: 5% 60%, 0 0;
   }
 }
 
