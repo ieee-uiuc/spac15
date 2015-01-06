@@ -235,21 +235,18 @@ body {
 
  }
 
-/* For mobile? */
+/* Default option, including mobile */
 .bs-docs-home {
   color: #eee;
-  background-color: #000000;
   background-size: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 0px 0;
-
-  /*
-  -webkit-animation: steps 2s infinite;
-  */
+  background-size: cover;
+  background-image: url('../../images/pictures/front.jpg');
 }
 
-/* For desktop? */
+/* For desktop, add in the div with animation */
 @media (min-width: 768px) {
   .bs-docs-home {
     /*
@@ -257,9 +254,22 @@ body {
     background-size: 35%;
     background-position: 5% 65%;
     */
-    background-image: url('../../images/logo/stairs_footsteps_3.svg'), url('../../images/pictures/front.jpg');
+    /*
     background-size: 40%, cover;
     background-position: 5% 60%, 0 0;
+    */
+  }
+
+  .animated-logo
+  {
+    height: 35vw;
+    width: 35vw;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    background-size: 100%;
+    background-image: url('../../images/logo/stairs_footsteps_3.svg');
+    -webkit-animation: steps 2s infinite;
   }
 }
 
