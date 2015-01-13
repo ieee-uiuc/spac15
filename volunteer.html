@@ -93,8 +93,6 @@
       <div class="container">
         <h1>Volunteer</h1>
         <p>Help yourself by helping others.</p>
-<!--         <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
- -->
       </div>
     </div>
 
@@ -108,6 +106,25 @@
 
 <h2>Volunteer <small>and get a unique t-shirt and a chance to help others.</small></h2>
 
+<div id="VolunteerFormContainer" class="lead">
+<form id="VolunteerForm" action="javascript:sendVolunteer()">
+
+<p>Name: <input type=text id="VolunteerName" required> </p>
+<p> NetID: <input type=text id="VolunteerNetID" required> </p>
+<p> T-Shirt Size:
+<select id="VolunteerSize" required>
+  <option value="s">Small</option>
+  <option value="m">Medium</option>
+  <option value="l">Large</option>
+  <option value="x">X-Large</option>
+</select>
+</p>
+
+<input class="btn btn-primary" type="submit">
+
+</form>
+</div>
+
 
     </div>
 
@@ -118,6 +135,44 @@
 <script src="dist/js/bootstrap.js"></script>
 <script src="docs-assets/js/holder.js"></script>
 <script src="docs-assets/js/application.js"></script>
+
+
+<script>
+  function sendVolunteer()
+  {
+    var username= $('#VolunteerName').val();
+    var netid = $('#VolunteerNetID').val();
+    var size = $('#VolunteernSize').val();
+
+    var dataIn = {
+      "username":username,
+      "netid":netid,
+      "size":size
+    };
+
+    $.post("volunteer.php",dataIn, function(data, status){
+      $('#RegistrationFormContainer').text(data);
+
+      /*
+      if (data == "Fail")
+      {
+        alert("Registration failed, please try again");
+      }
+
+      else if (data == "Success")
+      {
+        $('#RegistrationFormContainer').text("Thank you for registering for SPAC 2015!");
+      }
+
+      else if (data == "Repeat")
+      {
+        $('#RegistrationFormContainer').text("You've already registered!");
+      }
+      */
+    });
+
+  }
+</script>
 
   </body>
 </html>
