@@ -95,54 +95,8 @@
 
 <h2>Step 1: <small>Register for SPAC. Get a complimentary t-shirt.</small></h2>
 <br />
-<div id="RegistrationFormContainer" class="lead">
-<form id="RegistrationForm" action="javascript:sendRegistration()">
 
-<p>Name: <input type=text id="RegistrationName" required> </p>
-<p> NetID: <input type=text id="RegistrationNetID" required> </p>
-<p> Year:
-<select id="RegistrationYear" required>
-  <option value="1">Freshman</option>
-  <option value="2">Sophomore</option>
-  <option value="3">Junior</option>
-  <option value="4">Senior</option>
-</select>
-</p>
-<p> Major: 
-<select id="RegistrationMajor" required>
-  <option value="EE">Electrical Engineering</option>
-  <option value="CE">Computer Engineering</option>
-  <option value="AE">Aerospace Engineering</option>
-  <option value="MSE">Material Science and Engineering</option>
-  <option value="GE">General Engineering</option>
-  <option value="ME">Mechanical Engineering</option>
-  <option value="CEE">Civil Engineering</option>
-  <option value="BE">Bioengineering</option>
-  <option value="ABE">Agricultural and Biological Engineering</option>
-  <option value="EM">Engineering Mechanics</option>
-  <option value="MATH">Math</option>
-  <option value="CS">Computer Science</option>
-  <option value="PHYS">Physics</option>
-  <option value="OE">Other Engineering</option>
-  <option value="O">Other</option>
-</select>
-</p>
-
-<p> LinkedIn Profile URL (optional): <input type="text" id="RegistrationLinkedIn"> </p>
-
-<p> T-Shirt Size:
-<select id="RegistrationSize" required>
-  <option value="s">Small</option>
-  <option value="m">Medium</option>
-  <option value="l">Large</option>
-  <option value="x">X-Large</option>
-</select>
-</p>
-
-<input class="btn btn-primary" type="submit">
-
-</form>
-</div>
+<iframe src="https://docs.google.com/forms/d/1ioevyaNgg2bavMYpDbRLhYdnCsmKH2G0_G9wyX00nRY/viewform?embedded=true" height="850vh" width="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
 <h2>Step 2 (optional): <small>Upload your résumé. <br> Our sponsors will get access to all submitted résumés.</small></h2>
 
@@ -160,50 +114,6 @@
 <script src="dist/js/bootstrap.js"></script>
 <script src="docs-assets/js/holder.js"></script>
 <script src="docs-assets/js/application.js"></script>
-
-
-<script>
-  function sendRegistration()
-  {
-    var username= $('#RegistrationName').val();
-    var netid = $('#RegistrationNetID').val();
-    var major = $('#RegistrationMajor').val();
-    var year = $('#RegistrationYear').val();
-    var profile = $('#RegistrationLinkedIn').val();
-    var size = $('#RegistrationSize').val();
-
-    var dataIn = {
-      "username":username,
-      "netid":netid,
-      "major":major,
-      "year":year,
-      "profile":profile,
-      "size":size
-    };
-
-    $.post("register.php",dataIn, function(data, status){
-      $('#RegistrationFormContainer').text(data);
-
-      /*
-      if (data == "Fail")
-      {
-        alert("Registration failed, please try again");
-      }
-
-      else if (data == "Success")
-      {
-        $('#RegistrationFormContainer').text("Thank you for registering for SPAC 2015!");
-      }
-
-      else if (data == "Repeat")
-      {
-        $('#RegistrationFormContainer').text("You've already registered!");
-      }
-      */
-    });
-
-  }
-</script>
 
   </body>
 </html>
