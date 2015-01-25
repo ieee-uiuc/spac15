@@ -30,7 +30,7 @@ if ($_POST and $_FILES)
 	    // upload to the "resume" folder (if the folder doesn't exist, it will be created)
 	    $uploader->upload($_FILES['resume']['tmp_name'], "SPAC 2015 Resumes",  $filename);
 	
-	    echo "Your resume has been uploaded.";
+	    echo "success";
 	}
 
 	catch(Exception $e)
