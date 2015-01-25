@@ -101,12 +101,59 @@
 
 <h2>Step 2 (optional): <small>Upload your résumé. <br> Our sponsors will get access to all submitted résumés.</small></h2>
 
-<p hidden>
-<script src="https://app.box.com/embed/upload.js?token=pdktqecyfhvpm796z2qyx9iip3t3ecvo&folder_id=1525508803&w=385&h=385&i=Use%20your%20%40illinois.edu%20email%20when%20you%20upload&d=1&t=Submit%20file%20to%20SPAC%202014&r=1" type="text/javascript"></script>
-</p>
+
+<div id="ResumeFormDiv">
+	<form id="ResumeForm" action="javascript:sendResume()">
+		<p class="lead">Name: <input type="text" id="ResumeName" required placeholder="First Last"></p>
+		<p class="lead">NetID: <input type="text" id="ResumeNetID" required></p>
+		<p class="lead">Resume (must be PDF or Microsoft Word document) : <input type="file" id="ResumeFile" required></p>
+		<p class="lead"><input type="submit" value="Upload!"></p>
+	</form>
+</div>
 
 <h2>Step 3: <small>See you at SPAC 2015!</small></h2><br><br>
-    </div>
+</div>
+
+<script>
+
+function sendResume()
+{
+	// AJAX code for uploading resumes
+
+	// Get the form elements
+	var resumeName = $('#ResumeName'), resumeNetID = $('#ResumeNetID'), resumeFile = $('#ResumeFile'), resumeButton = $('#ResumeButton');
+
+	var data = new FormData();
+	data.append("resumeName", resumeName.val());
+	data.append("resumeNetID", resumeNetID.val());
+	data.append("resume", resumeFile.files[0]);
+
+	$.ajax(
+	{
+		url: 'resumeUpload.php',
+		data: data,
+		processData: false,
+		contentType: false,
+		type: 'POST',
+		success: function(response)
+		{
+			if (response == "success")
+			{
+				$('#ResumeFormDiv').html("<h3>Your resume has been submitted!</h3>");
+			}
+
+			else
+			{
+				alert(response + " Please try again.");
+			}
+		}
+	});
+
+	// based on response, it should either hide or reshow the form to try again
+}
+
+
+</script>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -116,5 +163,5 @@
 <script src="docs-assets/js/holder.js"></script>
 <script src="docs-assets/js/application.js"></script>
 
-  </body>
+</body>
 </html>
