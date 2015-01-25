@@ -126,7 +126,7 @@ function sendResume()
 	var data = new FormData();
 	data.append("resumeName", resumeName.val());
 	data.append("resumeNetID", resumeNetID.val());
-	data.append("resume", resumeFile.files[0]);
+	data.append("resume", resumeFile[0].files[0]);
 
 	$.ajax(
 	{
