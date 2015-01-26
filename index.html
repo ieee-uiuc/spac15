@@ -88,16 +88,16 @@
 		<div class="row clearfix" style="float:top">
 			<div class="container" style="-webkit-user-select:none; user-select:none; cursor:default">
 				<h1>A Step to Success</h1>
-				<div id="currentEvent" style="width: 77.5%; float: right; font-size:3em" >
+				<div id="currentEvent" style="width: 77.5%; float: right; font-size:5vh" >
 				</div>
 
-				<p class="lead" style="width:60%; float:right">The <em><strong>Student Professional Awareness Conference (SPAC)</strong></em> is an annual conference where engineers from diverse backgrounds speak about career and research opportunities in engineering.</p>
-				<p class="lead"><em><strong>When: Saturday, February 7th, 2015 <br /> Where: ECEB, Grainger Auditorium</strong></em></p>
+				<p class="lead hide2" style="width:60%; float:right">The <em><strong>Student Professional Awareness Conference (SPAC)</strong></em> is an annual conference where engineers from diverse backgrounds speak about career and research opportunities in engineering.</p>
+				<p class="lead hide2"><em><strong>When: Saturday, February 7th, 2015 <br /> Where: ECEB, Grainger Auditorium</strong></em></p>
 
-				<div id="toHide">
-					<a class="btn btn-danger btn-lg" href="register.html" style="padding:13px 23px 13px 23px; font-size: 16pt; box-shadow: 0 0 20px #337ab7"><strong>Register Now</strong></a>
+				<div>
+					<a class="btn btn-danger btn-lg hide" href="register.html" style="padding:13px 23px 13px 23px; font-size: 16pt; box-shadow: 0 0 20px #337ab7"><strong>Register Now</strong></a>
 
-					<div style="padding-top:2vh">
+					<div style="padding-top:2vh" class="hide3">
 						<p class="lead">SPAC 2015 is sponsored by:</p>
 						<ul class="list-inline">
 							<li><a href="http://www.microsoft.com"><img class="sponsorlogo" src="images/sponsors/microsoft.png"></a></li>
@@ -147,14 +147,14 @@
 						"Professor Panel | Academia and Industry: Connecting the Dots", 
 						"Check-in"  ];
 
-		var current = new Date(2015, 1, 7, 16);
+		var current = new Date();
 
 		// If SPAC has passed, put the last message in, and hide the other stuff
 		if (current > startTimes[0])
 		{
 			$('#currentEvent').html("<p>" + events[0] + "</p>");
-			$('.lead').css("display", "none");
-			$('#toHide').css("display", "none");
+			$('.hide2').css("display", "none");
+			$('.hide3').css("display", "none");
 		}
 
 		// If SPAC 2015 has started, fill in the proper event on the front page, and on some fixed sub heading on the agenda page
@@ -167,6 +167,7 @@
 				{
 					$('#currentEvent').html("<p>Right now: " + events[index] + "</p>");
 					$('.lead').css("font-size", "1.5em");
+					$('.hide2').css("display", "none");
 					return false;
 				}
 			});
