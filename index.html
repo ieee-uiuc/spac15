@@ -85,15 +85,16 @@
 <div class="container">
 	<!-- Page content of course! -->
 	<main class="bs-masthead" id="content" role="main">
-		<div class="row clearfix" style="float:top" id="actualContent">
+		<div class="row clearfix" style="float:top">
 			<div class="container" style="-webkit-user-select:none; user-select:none; cursor:default">
-				<h1>
-					A Step to Success
-				</h1>
-				<p class="lead">The <em><strong>Student Professional Awareness Conference</strong></em> is an annual conference where engineers from diverse backgrounds speak about career and research opportunities in engineering.</p>
+				<h1>A Step to Success</h1>
+				<div id="currentEvent" style="width: 77.5%; float: right; font-size:3em" >
+				</div>
+
+				<p class="lead" style="width:60%; float:right">The <em><strong>Student Professional Awareness Conference (SPAC)</strong></em> is an annual conference where engineers from diverse backgrounds speak about career and research opportunities in engineering.</p>
 				<p class="lead"><em><strong>When: Saturday, February 7th, 2015 <br /> Where: ECEB, Grainger Auditorium</strong></em></p>
 
-				<div>
+				<div id="toHide">
 					<a class="btn btn-danger btn-lg" href="register.html" style="padding:13px 23px 13px 23px; font-size: 16pt; box-shadow: 0 0 20px #337ab7"><strong>Register Now</strong></a>
 
 					<div style="padding-top:2vh">
@@ -117,6 +118,63 @@
 <script src="dist/js/bootstrap.js"></script>
 <script src="docs-assets/js/holder.js"></script>
 <script src="docs-assets/js/application.js"></script>
+<script>
 
+	function showCurrentEvent()
+	{
+		var startTimes = [	new Date(2015, 1, 7, 17, 30),
+							new Date(2015, 1, 7, 17),
+							new Date(2015, 1, 7, 16, 45),
+							new Date(2015, 1, 7, 16, 5),
+							new Date(2015, 1, 7, 15, 25),
+							new Date(2015, 1, 7, 14, 45),
+							new Date(2015, 1, 7, 14, 30),
+							new Date(2015, 1, 7, 13, 30),
+							new Date(2015, 1, 7, 12, 30),
+							new Date(2015, 1, 7, 11, 30),
+							new Date(2015, 1, 7, 11, 0)
+							];
+
+		var events = [  "Thank you for joining us at SPAC 2015; we hope to see you again next year!",
+						"Snacks and Meet 'n' Greet", 
+						"Q&A with Speakers", 
+						"Eric Klinker | Hacking Your Career Path for Fun and Profit", 
+						"Joel S. Emer | Industrial Research: The Intersection of Science and Technology", 
+						"Matt Merten | Engineering: Not just a profession, but a way of life", 
+						"Intermission", 
+						"Professional Development Workshop, hosted by GE", 
+						"Lunch", 
+						"Professor Panel | Academia and Industry: Connecting the Dots", 
+						"Check-in"  ];
+
+		var current = new Date(2015, 1, 7, 16);
+
+		// If SPAC has passed, put the last message in, and hide the other stuff
+		if (current > startTimes[0])
+		{
+			$('#currentEvent').html("<p>" + events[0] + "</p>");
+			$('.lead').css("display", "none");
+			$('#toHide').css("display", "none");
+		}
+
+		// If SPAC 2015 has started, fill in the proper event on the front page, and on some fixed sub heading on the agenda page
+		else if (current > startTimes[10])
+		{
+			// For each one, check if the current time is in between two start times
+			$.each(startTimes, function(index, value)
+			{
+				if (current >= value)
+				{
+					$('#currentEvent').html("<p>Right now: " + events[index] + "</p>");
+					$('.lead').css("font-size", "1.5em");
+					return false;
+				}
+			});
+		}
+	}
+
+	showCurrentEvent();
+
+</script>
 </body>
 </html>
