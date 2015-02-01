@@ -122,6 +122,13 @@
 
 	function showCurrentEvent()
 	{
+		// Get the current date
+		var current = new Date();
+
+		// Check if it has even started, if not return.
+		if (current < new Date(2015, 1, 7, 11))
+			return;
+
 		var startTimes = [	new Date(2015, 1, 7, 17, 30),
 							new Date(2015, 1, 7, 17),
 							new Date(2015, 1, 7, 16, 45),
@@ -147,8 +154,6 @@
 						"Professor Panel | Academia and Industry: Connecting the Dots", 
 						"Check-in"  ];
 
-		var current = new Date();
-
 		// If SPAC has passed, put the last message in, and hide the other stuff
 		if (current > startTimes[0])
 		{
@@ -165,7 +170,7 @@
 			{
 				if (current >= value)
 				{
-					$('#currentEvent').html("<p>Right now: " + events[index] + "</p>");
+					$('#currentEvent').html("<p>Right now: " + events[index] + "</p><br /><p>Next: " + events[index-1] + "</p>");
 					$('.lead').css("font-size", "1.5em");
 					$('.hide2').css("display", "none");
 					return false;
